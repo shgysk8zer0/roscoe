@@ -35,7 +35,6 @@ const config = {
 		'/css/core-css/fonts.css',
 		'/css/core-css/animations.css',
 		'/css/normalize/normalize.css',
-		'/css/animate.css/animate.css',
 		'/img/apple-touch-icon.png',
 		'/img/favicon.svg',
 		'/img/logos/creative-common-by-sa.svg',
