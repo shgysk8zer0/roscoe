@@ -1,3 +1,25 @@
 #header {
 	grid-area: header;
+	background-size: cover;
+	background-position: top center;
+	background-attachment: fixed;
+	background-image: var(--header-bg-f);
+}
+
+@media(max-width: 1024px) or (max-height: 768px) {
+	#header {
+		background-image: var(--header-bg-f);
+	}
+}
+
+@media(max-width: 640px) or (max-height: 480px) {
+	#header {
+		background-image: var(--header-bg-l);
+	}
+}
+
+@media(max-width: 320px) or (max-height: 240px) {
+	#header {
+		background-image: var(--header-bg-m);
+	}
 }

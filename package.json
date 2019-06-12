@@ -1,8 +1,8 @@
 {
-  "name": "template-basic",
+  "name": "roscoe",
   "version": "1.0.0",
   "private": true,
-  "description": "A fairly bare-bones template repository",
+  "description": "Just a bunch of pictures of a very cute puppy",
   "config": {
     "serve": {
       "domain": "localhost",
@@ -18,7 +18,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/shgysk8zer0/template-basic.git"
+    "url": "git+https://github.com/shgysk8zer0/roscoe.git"
   },
   "keywords": [
     "static",
@@ -32,11 +32,12 @@
   "author": "Chris Zuber <shgysk8zer0@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/shgysk8zer0/template-basic/issues"
+    "url": "https://github.com/shgysk8zer0/roscoe/issues"
   },
-  "homepage": "https://github.com/shgysk8zer0/template-basic",
+  "homepage": "https://github.com/shgysk8zer0/roscoe",
   "scripts": {
     "preinstall": "git submodule update --recursive --init",
+    "postinstall": "npm run build",
     "start": "http-server ${npm_package_config_serve_path} -p ${npm_package_config_serve_port} -a ${npm_package_config_serve_domain} -o",
     "test": "npm run lint:js && npm run lint:css",
     "fix": "npm run fix:js && npm run fix:css",

@@ -1,10 +1,10 @@
 {
-  "name": "tempalte-basic",
-  "short_name": "template-basic",
+  "name": "Roscoe",
+  "short_name": "Roscoe",
   "version": "1.0.0",
   "start_url": "/",
   "lang": "en",
-  "description": "",
+  "description": "Just a bunch of pictures of a very cute puppy",
   "icons": [{
     "src": "/img/favicon.svg",
     "sizes": "any",

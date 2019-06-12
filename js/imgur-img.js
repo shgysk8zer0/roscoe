@@ -99,6 +99,14 @@ export default class HTMLImgurImgElement extends HTMLPictureElement {
 		}
 	}
 
+	get caption() {
+		return this.getAttribute('caption');
+	}
+
+	set caption(text) {
+		this.setAttribute('caption', text);
+	}
+
 	get extensions() {
 		if (this.hasAttribute('extensions')) {
 			return this.getAttribute('extensions').split(',').map(ext => {
@@ -149,8 +157,10 @@ export default class HTMLImgurImgElement extends HTMLPictureElement {
 	async connectedCallback() {
 		[...this.children].forEach(child => child.remove());
 		const src = new URL(ENDPOINT);
+		const useSchema = this.getAttribute('itemtype') === 'https://schema.org/ImageObject' || this.parentElement.getAttribute('itemtype') === 'https://schema.org/ImageObject';
 		const {hash, extensions, sizes, defaultSize, defaultExtension} = this;
 		const img = document.createElement('img');
+		const caption = this.caption;
 		const sizeList = Object.entries({
 			h: this.highWidth,
 			l: this.largeWidth,
@@ -174,7 +184,18 @@ export default class HTMLImgurImgElement extends HTMLPictureElement {
 		});
 		src.pathname = `${hash}${defaultSize}${defaultExtension}`;
 		img.src = src.href;
+		if (useSchema) {
+			img.setAttribute('itemprop', 'url');
+		}
 		this.append(img);
+		if (typeof caption === 'string' && this.parentElement.tagName === 'FIGURE') {
+			const figcap = document.createElement('figcaption');
+			if (useSchema) {
+				figcap.setAttribute('itemprop', 'caption');
+			}
+			figcap.textContent = caption;
+			this.after(figcap);
+		}
 	}
 
 	static getType(ext) {

@@ -1,7 +1,7 @@
 :root {
 	--default-color: #343434;
 	--primary-color: #fafafa;
-	--accent-color: #528ff9;
+	--accent-color: #0ec6d7;
 	--contrast-color: #4c4c4c;
 	--alt-color: #fefefe;
 	--main-font: "Roboto";
@@ -34,7 +34,11 @@
 	--button-reject-active-background: #7a0c0c;
 
 	--dialog-border: none;
-
+	
+	--header-bg: url("https://i.imgur.com/eOTX1Qo.jpg");
+	--header-bg-f: url("https://i.imgur.com/eOTX1Qoh.jpg"); /* 1024 x 768 */
+	--header-bg-l: url("https://i.imgur.com/eOTX1Qol.jpg"); /* 640 x 480 */
+	--header-bg-m: url("https://i.imgur.com/eOTX1Qom.jpg"); /* 320 x 240 */
 	--nav-height: 2.7rem;
 	--header-height: 0;
 	--footer-height: auto;

@@ -1,5 +1,6 @@
 main {
 	grid-area: main;
+	padding: 1rem;
 	--link-color: #049ccf;
 	--link-decoration: underline;
 }
@@ -37,4 +38,20 @@ a.breach-url[href="#"] .icon {
 
 article p:first-letter {
 	margin-left: 2em;
+}
+
+@media(min-width: 800px) {
+	main {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(300px, auto));
+		grid-gap: 0.8rem;
+	}
+}
+
+main figure {
+	transition: transform 400ms ease-in-out;
+}
+
+main figure:hover {
+	transform: scale(1.2) rotate(-0.01turn);
 }
