@@ -7,3 +7,15 @@
 [submodule "img/logos"]
 	path = img/logos
 	url = https://github.com/shgysk8zer0/logos.git
+[submodule "js/std-js"]
+	path = js/std-js
+	url = https://github.com/shgysk8zer0/std-js.git
+[submodule "css/core-css"]
+	path = css/core-css
+	url = https://github.com/shgysk8zer0/core-css.git
+[submodule "css/normalize"]
+	path = css/normalize
+	url = https://github.com/necolas/normalize.css.git
+[submodule "fonts"]
+	path = fonts
+	url = https://github.com/shgysk8zer0/fonts.git
