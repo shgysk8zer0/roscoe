@@ -18,7 +18,7 @@
     "sizes": "512x512",
     "type": "image/png"
   }],
-  "theme_color": "#528ff9",
+  "theme_color": "#0ec6d7",
   "background_color": "#fefefe",
   "display": "standalone",
   "developer": {
