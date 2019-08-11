@@ -1,45 +1,64 @@
 'use strict';
-// 2019-06-11 12:25
+
 const config = {
 	version: location.hostname === 'localhost' ? new Date().toISOString() : '1.0.0',
 	stale: [
-		'https://unpkg.com/@webcomponents/custom-elements@1.2.4/custom-elements.min.js',
 		'/',
 		'/js/index.js',
-		'/img/icons.svg',
-		'/js/std-js/deprefixer.js',
-		'/js/std-js/shims.js',
-		'/js/std-js/md5.js',
-		'/js/share-button.js',
-		'/js/share-config.js',
-		'/js/gravatar-img.js',
-		'/js/current-year.js',
 		'/js/imgur-img.js',
-		'/js/std-js/Notification.js',
-		'/js/std-js/webShareApi.js',
-		'/js/share-config.js',
-		'/js/std-js/esQuery.js',
-		'/js/std-js/functions.js',
-		'/css/styles/index.css',
-		'/css/styles/vars.css',
-		'/css/styles/layout.css',
-		'/css/styles/header.css',
-		'/css/styles/nav.css',
-		'/css/styles/main.css',
-		'/css/styles/sidebar.css',
-		'/css/styles/footer.css',
-		'/css/core-css/rem.css',
-		'/css/core-css/viewport.css',
-		'/css/core-css/element.css',
-		'/css/core-css/class-rules.css',
-		'/css/core-css/utility.css',
-		'/css/core-css/fonts.css',
-		'/css/core-css/animations.css',
-		'/css/normalize/normalize.css',
+		'https://unpkg.com/@webcomponents/custom-elements@1.2.4/custom-elements.min.js',
+		'https://cdn.kernvalley.us/components/share-button.js',
+		'https://cdn.kernvalley.us/js/std-js/share-config.js',
+		'https://cdn.kernvalley.us/components/current-year.js',
+		'https://cdn.kernvalley.us/js/std-js/deprefixer.js',
+		'https://cdn.kernvalley.us/js/std-js/shims.js',
+		'https://cdn.kernvalley.us/js/std-js/md5.js',
+		'https://cdn.kernvalley.us/js/std-js/Notification.js',
+		'https://cdn.kernvalley.us/js/std-js/webShareApi.js',
+		'https://cdn.kernvalley.us/js/std-js/esQuery.js',
+		'https://cdn.kernvalley.us/js/std-js/functions.js',
+		// 'https://cdn.kernvalley.us/components/login-button.js',
+		// 'https://cdn.kernvalley.us/components/logout-button.js',
+		// 'https://cdn.kernvalley.us/components/register-button.js',
+		// 'https://cdn.kernvalley.us/components/gravatar-img.js',
+		'https://cdn.kernvalley.us/js/std-js/asyncDialog.js',
+		// 'https://cdn.kernvalley.us/js/User.js',
+		// 'https://cdn.kernvalley.us/components/login-form/login-form.js',
+		// 'https://cdn.kernvalley.us/components/registration-form/registration-form.js',
+		// 'https://cdn.kernvalley.us/components/login-form/login-form.html',
+		// 'https://cdn.kernvalley.us/components/registration-form/registration-form.html',
+		'/css/index.css',
+		'/css/vars.css',
+		'/css/layout.css',
+		'/css/header.css',
+		'/css/nav.css',
+		'/css/main.css',
+		'/css/sidebar.css',
+		'/css/footer.css',
+		'https://cdn.kernvalley.us/css/core-css/rem.css',
+		'https://cdn.kernvalley.us/css/core-css/viewport.css',
+		'https://cdn.kernvalley.us/css/core-css/element.css',
+		'https://cdn.kernvalley.us/css/core-css/class-rules.css',
+		'https://cdn.kernvalley.us/css/core-css/utility.css',
+		'https://cdn.kernvalley.us/css/core-css/fonts.css',
+		'https://cdn.kernvalley.us/css/core-css/animations.css',
+		'https://cdn.kernvalley.us/css/normalize/normalize.css',
+		'https://cdn.kernvalley.us/css/animate.css/animate.css',
+		'/img/icons.svg',
 		'/img/apple-touch-icon.png',
+		'/img/icon-192.png',
 		'/img/favicon.svg',
-		'/img/logos/creative-common-by-sa.svg',
-		'/img/octicons/mail.svg',
+		/* Social Icons for Web Share API shim */
+		'https://cdn.kernvalley.us/img/octicons/mail.svg',
+		'https://cdn.kernvalley.us/img/logos/facebook.svg',
+		'https://cdn.kernvalley.us/img/logos/twitter.svg',
+		'https://cdn.kernvalley.us/img/logos/google-plus.svg',
+		'https://cdn.kernvalley.us/img/logos/linkedin.svg',
+		'https://cdn.kernvalley.us/img/logos/reddit.svg',
+		'https://cdn.kernvalley.us/img/logos/gmail.svg',
+		'https://cdn.kernvalley.us/img/adwaita-icons/actions/mail-send.svg',
+		'https://cdn.kernvalley.us/img/logos/instagram.svg',
+		'https://cdn.kernvalley.us/fonts/roboto.woff2',
 	].map(path => new URL(path, location.origin).href),
 };
 
@@ -49,7 +68,12 @@ self.addEventListener('install', async () => {
 	const old = keys.filter(k => k !== config.version);
 	await Promise.all(old.map(key => caches.delete(key)));
 
-	await cache.addAll(config.stale);
+	try {
+		await cache.addAll(config.stale);
+	} catch (err) {
+		console.error(err);
+	}
+
 	skipWaiting();
 });
 
@@ -59,15 +83,15 @@ self.addEventListener('activate', event => {
 	}());
 });
 
-self.addEventListener('fetch', async event => {
-	async function get(request) {
-		const cache = await caches.open(config.version);
-		const cached = await cache.match(request);
-
-		return cached instanceof Response ? cached : fetch(request);
-	}
-
+self.addEventListener('fetch', event => {
 	if (event.request.method === 'GET' && config.stale.includes(event.request.url)) {
-		event.respondWith(get(event.request));
+		event.respondWith((async () => {
+			const cached = await caches.match(event.request);
+			if (cached instanceof Response) {
+				return cached;
+			} else {
+				return await fetch(event.request);
+			}
+		})());
 	}
 });
