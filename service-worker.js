@@ -6,7 +6,7 @@ const config = {
 		'/',
 		'/js/index.js',
 		'/js/imgur-img.js',
-		'https://unpkg.com/@webcomponents/custom-elements@1.2.4/custom-elements.min.js',
+		// 'https://unpkg.com/@webcomponents/custom-elements@1.2.4/custom-elements.min.js',
 		'https://cdn.kernvalley.us/components/share-button.js',
 		'https://cdn.kernvalley.us/js/std-js/share-config.js',
 		'https://cdn.kernvalley.us/components/current-year.js',
