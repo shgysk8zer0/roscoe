@@ -1,7 +1,7 @@
 # Roscoe
 Just a bunch of pictures of a very cute puppy
 
-[![Build Status](https://travis-ci.org/shgysk8zer0/roscoe.svg?branch=master)](https://travis-ci.org/shgysk8zer0/roscoe)
+[![Build Status](https://travis-ci.com/shgysk8zer0/roscoe.svg?branch=master)](https://travis-ci.com/shgysk8zer0/roscoe)
 [![GitHub license](https://img.shields.io/github/license/shgysk8zer0/roscoe.svg)](https://github.com/shgysk8zer0/roscoe/blob/master/LICENSE)
 ![GitHub last commit](https://img.shields.io/github/last-commit/shgysk8zer0/roscoe.svg)
 ![GitHub release](https://img.shields.io/github/release/shgysk8zer0/roscoe.svg)
