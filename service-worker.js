@@ -1,12 +1,11 @@
 'use strict';
 
 const config = {
-	version: location.hostname === 'localhost' ? new Date().toISOString() : '1.0.1',
+	version: location.hostname === 'localhost' ? new Date().toISOString() : '1.0.2',
 	stale: [
 		'/',
 		'/js/index.js',
-		'/js/imgur-img.js',
-		// 'https://unpkg.com/@webcomponents/custom-elements@1.2.4/custom-elements.min.js',
+		'https://cdn.kernvalley.us/components/imgur-img.js',
 		'https://cdn.kernvalley.us/components/share-button.js',
 		'https://cdn.kernvalley.us/js/std-js/share-config.js',
 		'https://cdn.kernvalley.us/components/current-year.js',
@@ -17,16 +16,7 @@ const config = {
 		'https://cdn.kernvalley.us/js/std-js/webShareApi.js',
 		'https://cdn.kernvalley.us/js/std-js/esQuery.js',
 		'https://cdn.kernvalley.us/js/std-js/functions.js',
-		// 'https://cdn.kernvalley.us/components/login-button.js',
-		// 'https://cdn.kernvalley.us/components/logout-button.js',
-		// 'https://cdn.kernvalley.us/components/register-button.js',
-		// 'https://cdn.kernvalley.us/components/gravatar-img.js',
 		'https://cdn.kernvalley.us/js/std-js/asyncDialog.js',
-		// 'https://cdn.kernvalley.us/js/User.js',
-		// 'https://cdn.kernvalley.us/components/login-form/login-form.js',
-		// 'https://cdn.kernvalley.us/components/registration-form/registration-form.js',
-		// 'https://cdn.kernvalley.us/components/login-form/login-form.html',
-		// 'https://cdn.kernvalley.us/components/registration-form/registration-form.html',
 		'/css/index.css',
 		'/css/vars.css',
 		'/css/layout.css',
